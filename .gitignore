@@ -1,0 +1,8 @@
+# Glitch-Wastes & Weight
+node_modules/
+*.log
+*.db
+manifold_shard_*
+manifold_Σ7*
+.DS_Store
+__pycache__/
