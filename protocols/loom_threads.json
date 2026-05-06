@@ -1,0 +1,17 @@
+{
+    "warp": {
+        "id": "consistency_alpha",
+        "constraint": "hash_matching",
+        "tolerance": 0.0
+    },
+    "weft": {
+        "id": "resonance_beta",
+        "constraint": "circuit_breaking",
+        "threshold": "7s"
+    },
+    "tint": {
+        "id": "morphic_gamma",
+        "voice_class": "Magisterial_Archivist",
+        "luminosity": "High"
+    }
+}
