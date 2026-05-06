@@ -1,17 +1,23 @@
-name: Consistency-Check-Circa-A
-on: [push, pull_request]
+name: Magisterial Consistency Check
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
 
 jobs:
-  lithic-stabilization:
+  consistency:
     runs-on: ubuntu-latest
     steps:
-      - name: Checkout Substrate
-        uses: actions/checkout@v4
-      
-      - name: Enforce CORE_DOGMA & Ex o Shield
+      - uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.x'
+      - name: Install dependencies
         run: |
-          echo "Initiating MLAOS Audit..."
-          # Running mlaos_engine validation against current context
-          python3 mlaos_engine.py
-          # Sentinel check for explosive logic
-          python3 logic_storm.py
+          python -m pip install --upgrade pip
+          # Add other dependencies if needed
+      - name: Run Resonance Ritual
+        run: |
+          PYTHONPATH=. python3 mtp_ritual.py
