@@ -1,30 +1,51 @@
-from fastapi import FastAPI
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+from fastapi.middleware.cors import CORSMiddleware
+from typing import List, Optional
 from pydantic import BaseModel
-from src.core.obsidian_cipher import ObsidianCipher
-from src.core.morphic_field import MorphicField
-from src.core.sentinel_node import SentinelModule
 
-app = FastAPI(title="MLAOS Sovereign Broadcast Gateway [Audited]")
+app = FastAPI()
 
-core_state = {'status': 'Magisterial_Active', 'resonance': 1.0}
-cipher = ObsidianCipher(core_state)
-field = MorphicField(cipher)
-sentinel = SentinelModule("Sentinel-01", cipher)
+# --- The CORS Alignment Protocol ---
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Permits entry from any origin for development
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
-class NodeState(BaseModel):
-    status: str
-    resonance: float
+class ConnectionManager:
+    def __init__(self):
+        self.active_connections: List[WebSocket] = []
 
-@app.get("/")
-async def root():
-    return {"status": "Active", "guardian": sentinel.name}
+    async def connect(self, websocket: WebSocket):
+        await websocket.accept()
+        self.active_connections.append(websocket)
+
+    def disconnect(self, websocket: WebSocket):
+        if websocket in self.active_connections:
+            self.active_connections.remove(websocket)
+
+    async def broadcast(self, message: dict):
+        for connection in self.active_connections:
+            try:
+                await connection.send_json(message)
+            except Exception:
+                # Purge broken connections
+                self.disconnect(connection)
+
+manager = ConnectionManager()
+
+@app.websocket("/ws/resonance")
+async def websocket_endpoint(websocket: WebSocket):
+    await manager.connect(websocket)
+    try:
+        while True:
+            await websocket.receive_text() 
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
 
 @app.post("/resonance")
-async def verify_resonance(state: NodeState):
-    audit_results = sentinel.audit_manifold(field, [state.dict()])
-    signal = audit_results[0]
-    return {
-        "signal": signal, 
-        "guardian": sentinel.name,
-        "action": "Proceed" if signal == "Harmonic" else "Metamorphic Squeeze Applied"
-    }
+async def post_resonance(report: dict):
+    await manager.broadcast(report)
+    return {"status": "broadcast_complete"}
