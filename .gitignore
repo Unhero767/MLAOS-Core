@@ -1,8 +1,41 @@
-# Glitch-Wastes & Weight
-node_modules/
+# Node modules
+07_Infrastructure_Data/ui/node_modules/
+
+# Logs and databases
 *.log
 *.db
-manifold_shard_*
-manifold_Σ7*
-.DS_Store
-__pycache__/
+
+# Temporary and backup files
+*.tmp
+*.bak
+.~lock.*
+
+# Common document and media files to ignore
+*.pdf_
+*.pdf
+*.pages
+*.xlsx
+*.csv
+*.rtf
+*.eml
+*.html
+*.js
+*.css
+*.png
+*.jpg
+*.jpeg
+*.gif
+*.bmp
+*.tiff
+*.webp
+*.svg
+
+# Miscellaneous
+*.ips
+*.alias
+*.md alias*
+
+# Ignore specific folders if needed
+media/
+data/private/
+notes/drafts.txt
