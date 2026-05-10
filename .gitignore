@@ -1,31 +1,107 @@
-echo "node_modules/" >> .gitignore
-lattice-dash/node_modules/
-ø
-# Node modules
-07_Infrastructure_Data/ui/node_modules/
+# ===========================
+# System and Editor Files
+# ===========================
 
-# Logs and databases
-*.log
-*.db
+# macOS system files
+.DS_Store
+.AppleDouble
+.LSOverride
 
-# Temporary and backup files
-*.tmp
+# Windows system files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Linux system files and editor backups
+*~
+*.swp
+*.swo
 *.bak
-.~lock.*
+*.tmp
+*.temp
+*.orig
+*.rej
 
-# Common document and media files to ignore
-*.pdf_
+# VSCode and other editor settings
+.vscode/
+.history/
+
+# ===========================
+# Python Specific
+# ===========================
+
+__pycache__/
+*.py[cod]
+*$py.class
+
+build/
+dist/
+*.egg-info/
+.eggs/
+*.egg
+pip-wheel-metadata/
+*.manifest
+*.spec
+
+pip-log.txt
+pip-delete-this-directory.txt
+
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+.hypothesis/
+.pytest_cache/
+cover/
+
+*.mo
+*.pot
+
+.ipynb_checkpoints/
+
+# ===========================
+# Node.js / JavaScript
+# ===========================
+
+lattice-dash/node_modules/
+node_modules/
+
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+.npm
+.eslintcache
+
+# ===========================
+# Common Documents and Data
+# ===========================
+
+*.docx
+*.doc
+*.xls
+*.xlsx
+*.ppt
+*.pptx
+*.rtf
+*.odt
+
 *.pdf
 *.pages
-*.xlsx
-*.csv
-*.rtf
-*.eml
-*.html
-*.js
-*.css
 
-# Images to ignore
+*.csv
+*.tsv
+
+# ===========================
+# Images and Media
+# ===========================
+
 *.png
 *.jpg
 *.jpeg
@@ -33,16 +109,72 @@ lattice-dash/node_modules/
 *.bmp
 *.tiff
 *.webp
+*.avif
 *.svg
 
-# Miscellaneous
-*.ips
-*.alias
-*.md alias*
+# ===========================
+# Archives and Binaries
+# ===========================
 
-# Ignore specific folders if needed
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+*.rar
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ===========================
+# Miscellaneous
+# ===========================
+
+.~lock.*
+*.lock
+
 media/
 data/private/
 notes/drafts.txt
-lattice-dash/node_modules/
-lattice-dash/node_modules/
+
+# ===========================
+# Custom Project Folders
+# ===========================
+
+# Add any other folders specific to your project here
+# e.g., logs/, temp/, cache/, etc.
+# ===========================
+# Archives and Binaries
+# ===========================
+
+*.zip
+*.tar.gz
+*.tar.bz2
+*.7z
+*.rar
+*.exe
+*.dll
+*.so
+*.dylib
+
+# ===========================
+# Miscellaneous
+# ===========================
+
+# Temporary files and locks
+.~lock.*
+*.lock
+
+# Media and private data folders
+media/
+data/private/
+notes/drafts.txt
+
+# ===========================
+# Custom Project Folders
+# ===========================
+
+# Add any other folders specific to your project here
+# e.g., logs/, temp/, cache/, etc.
+
+
