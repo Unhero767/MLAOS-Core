@@ -1,3 +1,6 @@
+echo "node_modules/" >> .gitignore
+lattice-dash/node_modules/
+ø
 # Node modules
 07_Infrastructure_Data/ui/node_modules/
 
@@ -41,3 +44,5 @@
 media/
 data/private/
 notes/drafts.txt
+lattice-dash/node_modules/
+lattice-dash/node_modules/
